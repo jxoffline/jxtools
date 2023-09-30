@@ -1,0 +1,245 @@
+
+
+.nav-pagination{
+    text-align: left;
+    width: auto;
+
+    display: block;
+    text-align: center;
+    margin: 50px auto;
+    width: 700px;
+
+    ul.pagination{
+        display: block;
+    }
+    ul.pagination li{
+        border-radius: 0px !important;
+        display: inline-block;
+    }
+}
+
+
+.controllerTool{
+ 
+
+    
+    .cancelEditGood{
+        display: none;
+    }
+     
+    .isChanged & .cancelEditGood{
+        display: inline-block;
+    }
+
+}
+.baseTableShop{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+	margin-top: 20px;
+    li{
+        display: block;
+        padding-bottom: 5px;
+        white-space: nowrap;
+    }
+
+    li > span{
+        vertical-align: middle;
+        display: inline-block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        
+    }
+    .colName{ 
+        min-width: 300px; 
+        font-weight: bold;
+        margin-right: 13px;        
+
+        .colEdit{
+            min-width: 300px !important;
+        }
+    }
+    .colID{
+        min-width: 45px;
+    }
+    
+    .colData{  
+        min-width: 35px;
+        margin-right: 5px; 
+    }
+
+    .colEdit{
+        display: none; 
+        min-width: 30px;
+    }
+
+
+
+    .isEditing{
+        .colEdit{
+            display: block;
+        }
+        .colDisplay{
+            display: none;
+        }
+    }
+
+
+    .dataRow:hover{
+        background-color: #ececec;
+    }
+
+    .colShopCounter{
+        min-width: 30px;
+    }
+
+}
+
+#goodsTable,
+#buysellTable{
+
+
+    .colData{
+        min-width: 80px;
+        max-width: 80px;
+    }
+
+    .colEdit{
+        min-width: 80px;
+        max-width: 80px;
+    }
+} 
+#buysellTable{
+    .colData .colEdit{
+        display: none !important;
+    }
+    .colData .colDisplay{
+        display: inline-block !important;
+    }
+}
+#itemViewer{
+     
+    .colSpr,
+    .colScript{
+        min-width: 300px !important;
+    }
+
+    .colType{
+        min-width: 250px !important;
+    }
+
+    .colID:hover{
+        cursor: pointer;
+    }
+}
+ 
+ 
+
+/*
+    General
+*/
+.select2-container--default .select2-selection--single{
+    font-weight: normal;
+} 
+
+/*
+    Buysell page
+*/
+.buysellEditorContainer{
+    border: 1px solid #ececec;
+    overflow: auto;
+
+    .colChose{
+        display: none !important;
+    }
+}
+#buysell-addGoods{
+    margin-top: 20px;
+}
+.addMoreShop{
+    margin-top: 20px;
+    width: 600px;
+}
+/*
+
+*/
+/* Define the animation */
+
+/* Apply the animation to the .flash-row class */
+.flash-row {
+    background-color: #cfe2ff; /* Change to the desired background color */
+}
+.dataRow{
+    transition: background-color 500ms ease; /* Adjust the duration and easing as needed */
+}
+
+/*
+    MagicScripts
+*/
+.downloadMagicScriptContainer{
+    text-align: center;
+    margin: 20px;
+}
+#magicscriptTable{
+    display: table;
+
+    > li{
+        display: table-row;
+
+        > span{
+            display: table-cell;
+            padding: 3px;
+        }
+    }
+
+    .firstRow span{
+        vertical-align: bottom;
+        white-space: normal;
+        text-align: left;
+    }
+
+    
+    .rowData[forCol="9"],
+    .rowData[forCol="11"],
+    .rowData[forCol="16"],
+    .rowData[forCol="17"],
+    .rowData[forCol="19"]{
+        display: none;
+    }
+
+    
+    .isNumber .form-control{
+        width: 35px;
+    }
+    .isNumber .form-control[forCol='3']{
+        width: 70px;
+    }
+    .isText .form-control{
+        width: 350px;
+    }
+
+
+
+    .rowData.isNumber[forCol="5"]{
+        .form-control{
+           width: 70px;
+        }    
+    }
+
+
+}
+
+
+.formQuickEdit{
+    white-space: nowrap;
+    div{
+        margin-right: 20px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+
+.popover{
+    --bs-popover-max-width: 500px;
+}

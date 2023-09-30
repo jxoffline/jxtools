@@ -1,0 +1,49 @@
+.pageMain{
+    padding: 20px;
+}
+
+.controllerContainer{
+    background-color: #ececec;
+    padding: 20px;
+    margin: 20px 0px;
+}
+
+.dataContainer{
+    padding: 20px;
+}
+
+#readProgressBar{
+    margin-top: 20px;
+}
+
+.exportSection{
+    text-align: center;
+    margin-top: 20px;
+}
+
+#page2{
+    display: none;
+}
+
+body.loadedData{
+    #page1{
+        display: none
+    }
+    #page2{
+        display: block;
+    }
+}
+
+
+footer{
+    font-weight: normal;
+    color: #bbb;
+}
+
+.pageMain{ 
+    margin: auto;
+}
+
+#uploadButton{
+    display: none;
+}
