@@ -3,10 +3,10 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
 **Author**: [vinh-ttn](https://www.facebook.com/nghiemtucdeptrai)
-**Tech Stack**:  NodeJS + jQuery + Bootstrap CSS
+
 **Contributors**: [vinh-ttn](https://www.facebook.com/nghiemtucdeptrai), [Huy Nguyen](https://fb.com/huysgn)
 
-
+**Tech Stack**:  NodeJS + jQuery + Bootstrap CSS
 
 
 
@@ -49,5 +49,4 @@ npm run build
 
 Xem chi tiết thao tác trong video bên dưới
 
-<iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fnghiemtucdeptrai%2Fvideos%2F277503778484305%2F%3Fidorvanity%3D800085930700601&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_QTmfC8G1So?si=h4IAK0cgnS3hpbBH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
