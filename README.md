@@ -3,5 +3,5 @@ The repository comprises all tools that support JX development and maintainteanc
 
 
 
-## 1. [ShopBuilder](./shopbuilder/source/README.md)
+## 1. [ShopBuilder](./shopbuilder/README.md)
 
