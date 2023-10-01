@@ -1,4 +1,4 @@
-# VNJX ShopBuilder
+# [VNJX ShopBuilder](https://jxoffline.github.io/jxtools/shopbuilder.d/)
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
@@ -41,11 +41,15 @@ npm run build
 
 ## Hướng dẫn sử dụng
 
-- **Bước 1**: Chuẩn bị tập tin cần chỉnh sửa trên máy chủ và nén lại thành một tập tin zip.
+- **Bước 1**: Mở liên kết đến trang công cụ
+
+​					https://jxoffline.github.io/jxtools/shopbuilder.d/
+
+- **Bước 2**: Chuẩn bị tập tin cần chỉnh sửa trên máy chủ và nén lại thành một tập tin zip.
 
   Xem file mẫu [assets/files/server1.zip](https://github.com/jxoffline/jxtools/blob/main/shopbuilder/assets/files/server1.zip) để biết cấu trúc tập tin upload lên.
 
-- **Bước 2**: Upload tập tin zip, và thêm các vật phẩm vào shop được chỉ định theo ý bạn
+- **Bước 3**: Upload tập tin zip, và thêm các vật phẩm vào shop được chỉ định theo ý bạn
 
 Xem chi tiết thao tác trong video bên dưới
 
