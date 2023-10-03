@@ -30,15 +30,6 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html', // Path to your HTML template file
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        // Define patterns for copying directories and their contents
-        {
-          from: './src/assets',
-          to: 'assets', // Output directory in dist/
-        },
-      ],
-    }),
+    })
   ], 
 };

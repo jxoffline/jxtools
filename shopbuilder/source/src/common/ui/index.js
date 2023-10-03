@@ -21,7 +21,7 @@ const thisLib = {
             ll.fileManager.save2File("buysell.txt", ll.helpers.arrayToCSV(CACHE.data.buysellData));
         });
         $("#downloadMagicScript").click(function(){  
-            ll.fileManager.save2File("magicscript.txt", ll.helpers.arrayToCSV(CACHE.data.magicscript));
+            ll.fileManager.save2File("magicscript.txt", ll.helpers.arrayToCSV(CACHE.data.magicscript)+"\r\n");
         });
         
         $("#backHome").click(()=>{
