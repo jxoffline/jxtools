@@ -47,7 +47,7 @@ npm run build
 
 - **Bước 2**: Chuẩn bị tập tin cần chỉnh sửa trên máy chủ và nén lại thành một tập tin zip.
 
-  Xem file mẫu [assets/files/server1.zip](https://github.com/jxoffline/jxtools/blob/main/shopbuilder/assets/files/server1.zip) để biết cấu trúc tập tin upload lên.
+  Xem file mẫu [assets/server1.zip](https://github.com/jxoffline/jxtools/blob/main/shopbuilder/assets/files/server1.zip) để biết cấu trúc tập tin upload lên.
 
 - **Bước 3**: Upload tập tin zip, và thêm các vật phẩm vào shop được chỉ định theo ý bạn
 
