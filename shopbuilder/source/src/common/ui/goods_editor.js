@@ -98,7 +98,7 @@ export const genRowHtml = (item) => {
         <span class="colData ${item.isFirstRow ? "" :""}" forColumn="${key}">
         ${item.isFirstRow ? goodsColumnRename[key] : `
             <span class="colDisplay">${item.isFirstRow ? goodsColumnRename[key] : item.data[key]}</span>
-            <input class="colEdit" type="number" value="${item.data[key]}"/>
+            <input class="colEdit" type="number" originalValue="${item.data[key]}" value="${item.data[key]}"/>
             `}
         </span>`;
     });
@@ -275,6 +275,12 @@ let boundEvent = false,
         container.on("blur", ".colEdit[type='number']", function(e){
             let col = parseInt($(this).closest(".colData").attr("forColumn"), 10);
             let value = parseInt($(this).val(), 10);
+            let oValue = $(this).attr("originalValue");
+
+
+            if (oValue+"" === value+"") return;
+            $(this).attr("originalValue", value);
+
             let itemID = parseInt($(this).closest(".dataRow").attr("forID"), 10);
 
             CACHE.data.goodsData[itemID][col] = value;

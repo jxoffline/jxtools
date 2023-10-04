@@ -90,7 +90,7 @@ const genRowHtml = (row, index) => {
             // Inline edit?
             html += `
             <span class="rowData ${[0,4,8,13].indexOf(k) !== -1 ? "isText": "isNumber"}" forCol="${k}" title="${firstRowData[k]}">
-                <input class="form-control" type="text" forCol="${k}" value="${v}"/>
+                <input class="form-control" type="text" forCol="${k}" originalValue="${v}" value="${v}"/>
             </span>`;
         }
     }); 
@@ -213,8 +213,11 @@ const bindEvents = () => {
 
         let itemID = parseInt($(this).closest(".dataRow").attr("forID"), 10);
 
-        
-        let oldCode = getCodeFromRow(CACHE.data.magicscript[itemID]);        
+        let oValue = $(this).attr("originalValue");
+
+        if (oValue+"" === value+"") return;
+        $(this).attr("originalValue", value);
+
 
         // Edit value in magicscript.txt
         CACHE.data.magicscript[itemID][col] = value;
