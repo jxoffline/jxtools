@@ -104,10 +104,11 @@ const thisLib = {
         /*
             Auto save moi 30 giay
         */
-
-        ll.db.save("goods.txt", CACHE.data.goodsData);
-        ll.db.save("buysell.txt", CACHE.data.buysellData); 
-        ll.db.save("magicscript.txt", CACHE.data.magicscript);
+        setInterval(()=>{
+            ll.db.save("goods.txt", CACHE.data.goodsData);
+            ll.db.save("buysell.txt", CACHE.data.buysellData); 
+            ll.db.save("magicscript.txt", CACHE.data.magicscript);
+        }, 30*1000);
     }
 
 
