@@ -2,6 +2,8 @@ import {typeTranslation} from "../common/ui/items_viewer";
 import helpers from "./helpers";
 import {encode, decode, labels} from "windows-1252";
 
+import db from "./db";
+
 function patch1252(content) { 
   
     content = encode(content,{
@@ -22,11 +24,10 @@ function patch1252(content) {
 const save2File = (name, content) => {
     let blob;
     
+    let newContent = patch1252(content);
     
-    blob = new Blob([patch1252(content)], {type: "text/csv;charset=windows-1252"});
-
-    // Function to encode a string as Uint8Array with Windows-1252 encoding
-    
+    blob = new Blob([newContent], {type: "text/csv;charset=windows-1252"});
+ 
 
     // Create a Blob from the Uint8Array
     //const blob = new Blob([uint16ArrayData], { type: "text/csv;charset=windows-1252" });

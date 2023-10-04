@@ -146,7 +146,7 @@ const bindEvents = () => {
         row.addClass("flash-row"); 
 
 		CACHE.data.goodsData.push(lastRow);
-		llEvents.trigger("goods.changed"); 
+		llEvents.trigger("goodsData.changed"); 
 		
     });
 
@@ -190,11 +190,7 @@ const bindEvents = () => {
 
         // Add 2 magicscript.txt and the cache pool
         CACHE.data.magicscript.push(clone);
-        CACHE.addItemToCachePool("magicscript", clone);
-        CACHE.onCachePoolReady();
-
-        // Reshow data for testing purpose
-        thisLib.show();
+        llEvents.trigger("magicscript.changed");
 
     });
 
@@ -222,17 +218,16 @@ const bindEvents = () => {
 
         // Edit value in magicscript.txt
         CACHE.data.magicscript[itemID][col] = value;
+        llEvents.trigger("magicscript.changed");
+    });
 
-        // Delete old code
-        delete CACHE.data.allItems[oldCode];
-        delete CACHE.searchCache[oldCode];
 
-        CACHE.data.allItemKeysByType.magicscript = CACHE.data.allItemKeysByType.magicscript.filter(v => v !== oldCode);
-        CACHE.data.allItemsKey = CACHE.data.allItemsKey.filter(v => v !== oldCode);
 
-        // Edit cache pool
-        CACHE.addItemToCachePool("magicscript", CACHE.data.magicscript[itemID]);
-        CACHE.onCachePoolReady();
+    // Reshow data for testing purpose
+    llEvents.on("dataCache.changed", ()=>{
+        setTimeout(()=>{
+            thisLib.show();
+        },1);
     });
 }
 
@@ -280,7 +275,6 @@ let thisLib = {
         }
         paginationContainer.empty().append(pageination);
 
-        console.log("G", pageination);
         // Func3: content
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = Math.min(startIndex + itemsPerPage, items.length);

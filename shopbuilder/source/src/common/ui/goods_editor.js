@@ -128,7 +128,7 @@ const onReplaceItem = (fromID, toID) => {
     CACHE.data.goodsData[fromID][4] = newItem.level;
 
     thisLib.show();
-    llEvents.trigger("buysell.update");
+    llEvents.trigger("buysellData.changed");
 };
 
 const itemsPerPage = 100;
@@ -267,7 +267,7 @@ let boundEvent = false,
             CACHE.data.goodsData.push(lastRow);
             
             thisLib.show();
-            llEvents.trigger("buysell.update");
+            llEvents.trigger("buysellData.changed");
 
         });
 
@@ -280,7 +280,7 @@ let boundEvent = false,
             CACHE.data.goodsData[itemID][col] = value;
         });
 
-		llEvents.on("goods.changed", _.debounce(()=>{
+		llEvents.on("goodsData.changed", _.debounce(()=>{
 			thisLib.show();
 		}, 1000));
 
@@ -316,7 +316,7 @@ let boundEvent = false,
             /*setTimeout(()=>{
                 row.removeClass("flash-row");
             }, 5000)*/
-			llEvents.trigger("buysell.update");
+			llEvents.trigger("buysellData.changed");
 		});
     };
 

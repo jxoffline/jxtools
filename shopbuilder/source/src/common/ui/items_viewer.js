@@ -151,9 +151,15 @@ const bindEvents = () => {
         }, 5000)*/
 
 		CACHE.data.goodsData.push(lastRow);
-		llEvents.trigger("goods.changed");
+		llEvents.trigger("goodsData.changed");
 		//goods_editor.show();
 		
+    });
+
+    llEvents.on("dataCache.changed", ()=>{
+        setTimeout(()=>{
+            thisLib.show();
+        },1);
     });
 
 }

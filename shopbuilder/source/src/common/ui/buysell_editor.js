@@ -29,8 +29,10 @@ const bindEvents = ()=>{
     if (boundEvent) return;
     boundEvent = true;
 
-	llEvents.on("buysell.update", _.debounce(()=>{
+	llEvents.on("buysellData.changed", _.debounce(()=>{
 		thisLib.show();
+
+        generateSelectionDropdownContent(); 
 	}, 1000));
 
     // Shop: chon
@@ -180,8 +182,8 @@ const generateSelectionDropdownContent = () =>{
 			latest = index;
         }); 
     }
-    shopSelectionDropdown.val(CACHE.isDEV ? 140 : latest).change();
-    goodsBuySellSelection.val(CACHE.isDEV ? 140 : latest).change();
+    shopSelectionDropdown.val(latest).change();
+    goodsBuySellSelection.val(latest).change();
 }
 
 const thisLib = {
@@ -190,7 +192,6 @@ const thisLib = {
         shopSelectionDropdown = $("#shopSelect");   
         goodsBuySellSelection = $("#buysellSelection");
         bindEvents();
-             
         generateSelectionDropdownContent(); 
     },
 

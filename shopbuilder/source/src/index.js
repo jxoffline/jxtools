@@ -21,13 +21,62 @@ function customSort(a, b) {
     }
   }
 
-
-
-const onHavingData = (output, onDone)=>{
+const buildDataCache = () =>{
 
     // Display the decoded content in the output div
     CACHE.data.allItems = {}; 
     CACHE.data.allItemKeysByType = {}; 
+    CACHE.data.allItemsKey = [];
+
+    // Process other fields
+    $.each(CACHE.data.others, (fileName, rows)=>{
+
+        let itemType = ll.helpers.getFileName(fileName).replace(".txt","");
+        
+        if (itemType == "platinaequip") itemType = "goldequip";
+        
+        for (let index=0; index<rows.length; index++){
+            // Is this first row?
+            if (index == 0){
+                continue;
+            }        
+            let row = rows[index];
+            CACHE.addItemToCachePool(itemType, row, index);
+        }
+    });
+
+    // Process magicscript
+    let rows = CACHE.data.magicscript,
+        itemType = 'magicscript';
+    for (let index=0; index<rows.length; index++){
+        // Is this first row?
+        if (index == 0){
+            continue;
+        }        
+        let row = rows[index];
+        CACHE.addItemToCachePool(itemType, row, index);
+    }
+     
+    // Build codes key
+    $.each(CACHE.data.allItems, (itemID, data)=>{
+        let itemType = data.__type;
+        if (!CACHE.data.allItemKeysByType[itemType]) CACHE.data.allItemKeysByType[itemType] = [];
+        CACHE.data.allItemKeysByType[itemType].push(itemID);
+    });
+    
+    // Then sort them
+    let items = Object.keys(CACHE.data.allItems);
+    items.sort();
+    CACHE.data.allItemsKey = items; 
+
+    llEvents.trigger("dataCache.changed"); 
+};
+
+
+const onHavingData = (output)=>{
+
+    CACHE.data.others = {};
+
 
     // Get the keys of the object
     const fileNames = Object.keys(output);
@@ -65,46 +114,46 @@ const onHavingData = (output, onDone)=>{
 
         if (itemType === "magicscript"){
             CACHE.data.magicscript = c.map(ll.helpers.parseCSVRow);  
+            continue;
         } 
+
         
         /*
             Normal item files
         */
+        if (!c.length) continue;
+        let firstRow = c[0].toLowerCase();
 
-        for (let index=0; index<c.length; index++){
-            let oRow = c[index];
-
-            // Not having correct column = not item files, skip
-            if (index == 0 && oRow && (oRow.toLowerCase().indexOf("itemgenre") === -1 || oRow.toLowerCase().indexOf("detailtype") === -1)){
-                break;
-            } 
-
-            // Otherwise read it in
-            let row = ll.helpers.parseCSVRow(oRow);
-
-            // Is this first row?
-            if (index == 0){
-                continue;
-            }        
-            CACHE.addItemToCachePool(itemType, row, index);
-        }
+        // Not having correct column = not item files, skip
+        if (firstRow.indexOf("itemgenre") === -1 || firstRow.indexOf("detailtype") === -1){
+            continue;
+        } 
+        
+        CACHE.data.others[fileName] = c.map(ll.helpers.parseCSVRow);
     }
 
-    CACHE.onCachePoolReady();
 
     if (!CACHE.data.goodsData || !CACHE.data.goodsData.length){
         return true;
     }
-    onDone();
+    buildDataCache();
     
 }
  
 
 $(document).ready(()=>{
     
+    // Set page version
+    $("#pageTitle").text(CACHE.version);
+    $("head title").text(CACHE.version);
 
+    ll.db.init();
+
+    let inited = false;
     const onDone = () => {
+        if (inited) return;
 
+        inited = true;
         // Tab 1: Item viewer
         UI.renderItemsViewer();
 
@@ -117,6 +166,9 @@ $(document).ready(()=>{
         // Tab 4: magicscript.txt
         UI.renderMagicScriptEditor();
 
+        // Tab over: DB manager/cache
+        UI.renderDBManager();
+
         // Focus to buysell
         if (CACHE.isDEV){
             $("#magicscript-tab").click();
@@ -127,14 +179,30 @@ $(document).ready(()=>{
         //$("#item-viewers-tab").click();
 
         $("body").addClass("loadedData");
+
     }; 
     
 
-    UI.init(onHavingData, onDone); 
+    
+
+    // Magicscript was edited elsewhere? Re build inventory
+    llEvents.on("magicscript.changed", ()=>{
+        buildDataCache();
+    });
+
+    // Data cahced build?
+    llEvents.on("dataCache.changed", ()=>{
+        setTimeout(()=>{
+            onDone();
+        },1);
+    });
+
+    // Init every thing
+    UI.init(onHavingData); 
 
     //LOCAL DEV:
     if (CACHE.isDEV){
-        ll.fileManager.readZipFileFromURL("assets/files/server1.zip", (output)=>{
+        ll.fileManager.readZipFileFromURL("assets/server1.zip", (output)=>{
             onHavingData(output, onDone);
         });
     }
