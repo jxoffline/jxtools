@@ -324,6 +324,34 @@ let boundEvent = false,
             }, 5000)*/
 			llEvents.trigger("buysellData.changed");
 		});
+
+        // Add 2 shop
+
+        $("#addAllGoodsToSelectedShop").click(()=>{
+
+            container.find(".dataRow").each(function(){
+                let row = $(this);
+                let itemID = parseInt(row.attr("forID"), 10);
+                let selectedShop = $("#buysellSelection").val();
+                if (CACHE.data.buysellData[selectedShop]){
+                    let found = false;
+                    $.each(CACHE.data.buysellData[selectedShop], (k,v)=>{
+                        if (k>0 && (v == '' || !v)){
+                            CACHE.data.buysellData[selectedShop][k]= itemID;
+                            found = true;
+                            return false;
+                        }
+                    });
+                    if (!found){
+                        CACHE.data.buysellData[selectedShop].push(itemID);
+                    }
+                }
+                row.addClass("flash-row");
+            });
+
+
+            llEvents.trigger("goodsData.changed");
+        });
     };
 
 let container, currentPage;

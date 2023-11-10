@@ -165,6 +165,11 @@ const onReplaceItem = (fromID, toID) => {
 };
 
 const generateSelectionDropdownContent = () =>{
+
+    let currentVal1 = shopSelectionDropdown.val(),
+        currentVal2 = goodsBuySellSelection.val();
+
+
     shopSelectionDropdown.empty();
 	
     goodsBuySellSelection.empty();
@@ -182,8 +187,8 @@ const generateSelectionDropdownContent = () =>{
 			latest = index;
         }); 
     }
-    shopSelectionDropdown.val(latest).change();
-    goodsBuySellSelection.val(latest).change();
+    shopSelectionDropdown.val(currentVal1).change();
+    goodsBuySellSelection.val(currentVal2).change();
 }
 
 const thisLib = {

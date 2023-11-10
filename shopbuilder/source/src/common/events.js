@@ -20,7 +20,6 @@ const eventsWKey = {};
 
 
 const on = (eventName, callback, uniqueKey) => {
-
   if (uniqueKey){
     eventsWKey[uniqueKey] = callback;
   }

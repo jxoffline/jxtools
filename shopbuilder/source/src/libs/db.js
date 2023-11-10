@@ -19,11 +19,9 @@ const thisLib = {
             if (existingFile) {
               // If the record exists, update it
               await db.files.update(fileName, { fContent: fileContent });
-              console.log(`Updated record for ${fileName}`);
             } else {
               // If the record doesn't exist, create a new one
               await db.files.add({ fName: fileName, fContent: fileContent });
-              console.log(`Created record for ${fileName}`);
             }
           } catch (error) {
             console.error(`Error updating/creating record: ${error}`);
@@ -36,7 +34,6 @@ const thisLib = {
           if (file) {
             return file.fContent;
           } else {
-            console.log(`File with name '${fileName}' not found.`);
             return null;
           }
         } catch (error) {
@@ -49,7 +46,6 @@ const thisLib = {
           const file = await db.files.get({ fName: fileName });
           if (file) {
             await db.files.delete(fileName);
-            console.log(`Deleted record with file name '${fileName}'.`);
           } else {
             console.log(`File with name '${fileName}' not found. No records deleted.`);
           }

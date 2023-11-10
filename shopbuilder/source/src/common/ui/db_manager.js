@@ -42,7 +42,6 @@ const bindEvents = () =>{
         ll.db.get("buysell.txt").then(function(d){
             if (d){
                 CACHE.data.buysellData = d;
-                console.log(d);
                 onDone();
             }
         });

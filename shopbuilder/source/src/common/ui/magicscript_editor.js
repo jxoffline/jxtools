@@ -191,6 +191,7 @@ const bindEvents = () => {
         // Add 2 magicscript.txt and the cache pool
         CACHE.data.magicscript.push(clone);
         llEvents.trigger("magicscript.changed");
+        thisLib.show(false, 1);
 
     });
 
@@ -227,11 +228,11 @@ const bindEvents = () => {
 
 
     // Reshow data for testing purpose
-    llEvents.on("dataCache.changed", ()=>{
+    /*llEvents.on("dataCache.changed", ()=>{
         setTimeout(()=>{
             thisLib.show();
         },1);
-    });
+    });*/
 }
 
 
