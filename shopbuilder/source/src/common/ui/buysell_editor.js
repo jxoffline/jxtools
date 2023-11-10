@@ -29,8 +29,10 @@ const bindEvents = ()=>{
     if (boundEvent) return;
     boundEvent = true;
 
-	llEvents.on("buysell.update", _.debounce(()=>{
+	llEvents.on("buysellData.changed", _.debounce(()=>{
 		thisLib.show();
+
+        generateSelectionDropdownContent(); 
 	}, 1000));
 
     // Shop: chon
@@ -163,6 +165,11 @@ const onReplaceItem = (fromID, toID) => {
 };
 
 const generateSelectionDropdownContent = () =>{
+
+    let currentVal1 = shopSelectionDropdown.val(),
+        currentVal2 = goodsBuySellSelection.val();
+
+
     shopSelectionDropdown.empty();
 	
     goodsBuySellSelection.empty();
@@ -180,8 +187,8 @@ const generateSelectionDropdownContent = () =>{
 			latest = index;
         }); 
     }
-    shopSelectionDropdown.val(CACHE.isDEV ? 140 : latest).change();
-    goodsBuySellSelection.val(CACHE.isDEV ? 140 : latest).change();
+    shopSelectionDropdown.val(currentVal1).change();
+    goodsBuySellSelection.val(currentVal2).change();
 }
 
 const thisLib = {
@@ -190,7 +197,6 @@ const thisLib = {
         shopSelectionDropdown = $("#shopSelect");   
         goodsBuySellSelection = $("#buysellSelection");
         bindEvents();
-             
         generateSelectionDropdownContent(); 
     },
 

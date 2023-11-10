@@ -90,7 +90,7 @@ const genRowHtml = (row, index) => {
             // Inline edit?
             html += `
             <span class="rowData ${[0,4,8,13].indexOf(k) !== -1 ? "isText": "isNumber"}" forCol="${k}" title="${firstRowData[k]}">
-                <input class="form-control" type="text" forCol="${k}" value="${v}"/>
+                <input class="form-control" type="text" forCol="${k}" originalValue="${v}" value="${v}"/>
             </span>`;
         }
     }); 
@@ -146,7 +146,7 @@ const bindEvents = () => {
         row.addClass("flash-row"); 
 
 		CACHE.data.goodsData.push(lastRow);
-		llEvents.trigger("goods.changed"); 
+		llEvents.trigger("goodsData.changed"); 
 		
     });
 
@@ -190,11 +190,8 @@ const bindEvents = () => {
 
         // Add 2 magicscript.txt and the cache pool
         CACHE.data.magicscript.push(clone);
-        CACHE.addItemToCachePool("magicscript", clone);
-        CACHE.onCachePoolReady();
-
-        // Reshow data for testing purpose
-        thisLib.show();
+        llEvents.trigger("magicscript.changed");
+        thisLib.show(false, 1);
 
     });
 
@@ -217,23 +214,25 @@ const bindEvents = () => {
 
         let itemID = parseInt($(this).closest(".dataRow").attr("forID"), 10);
 
-        
-        let oldCode = getCodeFromRow(CACHE.data.magicscript[itemID]);        
+        let oValue = $(this).attr("originalValue");
+
+        if (oValue+"" === value+"") return;
+        $(this).attr("originalValue", value);
+
 
         // Edit value in magicscript.txt
         CACHE.data.magicscript[itemID][col] = value;
-
-        // Delete old code
-        delete CACHE.data.allItems[oldCode];
-        delete CACHE.searchCache[oldCode];
-
-        CACHE.data.allItemKeysByType.magicscript = CACHE.data.allItemKeysByType.magicscript.filter(v => v !== oldCode);
-        CACHE.data.allItemsKey = CACHE.data.allItemsKey.filter(v => v !== oldCode);
-
-        // Edit cache pool
-        CACHE.addItemToCachePool("magicscript", CACHE.data.magicscript[itemID]);
-        CACHE.onCachePoolReady();
+        llEvents.trigger("magicscript.changed");
     });
+
+
+
+    // Reshow data for testing purpose
+    /*llEvents.on("dataCache.changed", ()=>{
+        setTimeout(()=>{
+            thisLib.show();
+        },1);
+    });*/
 }
 
 
@@ -280,7 +279,6 @@ let thisLib = {
         }
         paginationContainer.empty().append(pageination);
 
-        console.log("G", pageination);
         // Func3: content
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = Math.min(startIndex + itemsPerPage, items.length);

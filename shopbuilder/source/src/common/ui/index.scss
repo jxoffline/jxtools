@@ -243,3 +243,15 @@
 .popover{
     --bs-popover-max-width: 500px;
 }
+
+
+/*
+    Restore magicscripts.txt
+*/
+
+.cacheFoundContainer{
+    display: none;
+    &.isVisible{
+        display: block;
+    }
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VNJX ShopBuilder 1.2.1</title> 
+    <title></title> 
     <!-- Add the Bootstrap CSS link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Include the Select2 CSS from CDN -->
@@ -19,7 +19,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip-utils/0.1.0/jszip-utils.min.js"></script>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/dexie@3.2.4/dist/dexie.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
@@ -37,7 +37,7 @@
 <body>
 
     <div class="pageMain">
-        <h3>VNJX ShopBuilder 1.2.1</h3>
+        <h3 id="pageTitle"></h3>
         <div id="page1">
             <div class="alert alert-info" role="alert">
                 <b>Hướng dẫn:</b>
@@ -63,6 +63,13 @@
             </div>
         </div>
         <div id="page2">
+
+
+            <div class="cacheManager"> 
+
+            </div>
+
+
             <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                 
 
@@ -160,6 +167,7 @@
 						
 
                         <div id="goodsEditor"></div>
+                        <button type="button" id="addAllGoodsToSelectedShop" class="btn btn-primary">Thêm tất cả vào shop đã chọn</button>
 
                         <nav id="goodsEditorPagination" class="nav-pagination" aria-label="Page navigation example"></nav>
 
@@ -187,7 +195,7 @@
                         <div id="itemViewer">
             
                         </div>
-            
+                        <button type="button" id="addAllVisibleItems" class="btn btn-primary">Thêm tất cả vào vật phẩm bán</button>
                         <nav id="itemViewerPagination" class="nav-pagination" aria-label="Page navigation example"></nav>
                     </div>
 

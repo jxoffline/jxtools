@@ -1,5 +1,9 @@
+
+
 const thisLib = {
+    version: "VNJX ShopBuilder 1.4",
     isDEV: false,
+ 
 	data: {},
 
     searchCache: {},
@@ -50,20 +54,7 @@ const thisLib = {
         let itemID = [m.genre, m.type, m.spec || 0, m.kind !== "" ? (m.kind || 0) : 0, m.level !== "" ? (m.level || 0) : 0].join("_");
         m.code = itemID;
         thisLib.data.allItems[itemID] = m;  
-    },
-
-    onCachePoolReady: () =>{
-
-        $.each(thisLib.data.allItems, (itemID, data)=>{
-            let itemType = data.__type;
-            if (!thisLib.data.allItemKeysByType[itemType]) thisLib.data.allItemKeysByType[itemType] = [];
-            thisLib.data.allItemKeysByType[itemType].push(itemID);
-        });
-        
-        let items = Object.keys(thisLib.data.allItems);
-        items.sort();
-        thisLib.data.allItemsKey = items; 
-    }
+    } 
 };
 
 export default thisLib;

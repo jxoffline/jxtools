@@ -98,7 +98,7 @@ export const genRowHtml = (item) => {
         <span class="colData ${item.isFirstRow ? "" :""}" forColumn="${key}">
         ${item.isFirstRow ? goodsColumnRename[key] : `
             <span class="colDisplay">${item.isFirstRow ? goodsColumnRename[key] : item.data[key]}</span>
-            <input class="colEdit" type="number" value="${item.data[key]}"/>
+            <input class="colEdit" type="number" originalValue="${item.data[key]}" value="${item.data[key]}"/>
             `}
         </span>`;
     });
@@ -128,7 +128,7 @@ const onReplaceItem = (fromID, toID) => {
     CACHE.data.goodsData[fromID][4] = newItem.level;
 
     thisLib.show();
-    llEvents.trigger("buysell.update");
+    llEvents.trigger("buysellData.changed");
 };
 
 const itemsPerPage = 100;
@@ -267,7 +267,7 @@ let boundEvent = false,
             CACHE.data.goodsData.push(lastRow);
             
             thisLib.show();
-            llEvents.trigger("buysell.update");
+            llEvents.trigger("buysellData.changed");
 
         });
 
@@ -275,12 +275,18 @@ let boundEvent = false,
         container.on("blur", ".colEdit[type='number']", function(e){
             let col = parseInt($(this).closest(".colData").attr("forColumn"), 10);
             let value = parseInt($(this).val(), 10);
+            let oValue = $(this).attr("originalValue");
+
+
+            if (oValue+"" === value+"") return;
+            $(this).attr("originalValue", value);
+
             let itemID = parseInt($(this).closest(".dataRow").attr("forID"), 10);
 
             CACHE.data.goodsData[itemID][col] = value;
         });
 
-		llEvents.on("goods.changed", _.debounce(()=>{
+		llEvents.on("goodsData.changed", _.debounce(()=>{
 			thisLib.show();
 		}, 1000));
 
@@ -316,8 +322,36 @@ let boundEvent = false,
             /*setTimeout(()=>{
                 row.removeClass("flash-row");
             }, 5000)*/
-			llEvents.trigger("buysell.update");
+			llEvents.trigger("buysellData.changed");
 		});
+
+        // Add 2 shop
+
+        $("#addAllGoodsToSelectedShop").click(()=>{
+
+            container.find(".dataRow").each(function(){
+                let row = $(this);
+                let itemID = parseInt(row.attr("forID"), 10);
+                let selectedShop = $("#buysellSelection").val();
+                if (CACHE.data.buysellData[selectedShop]){
+                    let found = false;
+                    $.each(CACHE.data.buysellData[selectedShop], (k,v)=>{
+                        if (k>0 && (v == '' || !v)){
+                            CACHE.data.buysellData[selectedShop][k]= itemID;
+                            found = true;
+                            return false;
+                        }
+                    });
+                    if (!found){
+                        CACHE.data.buysellData[selectedShop].push(itemID);
+                    }
+                }
+                row.addClass("flash-row");
+            });
+
+
+            llEvents.trigger("goodsData.changed");
+        });
     };
 
 let container, currentPage;

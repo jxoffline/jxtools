@@ -151,9 +151,42 @@ const bindEvents = () => {
         }, 5000)*/
 
 		CACHE.data.goodsData.push(lastRow);
-		llEvents.trigger("goods.changed");
+		llEvents.trigger("goodsData.changed");
 		//goods_editor.show();
 		
+    });
+
+    llEvents.on("dataCache.changed", ()=>{
+        setTimeout(()=>{
+            thisLib.show();
+        },1);
+    });
+
+    $("#addAllVisibleItems").click(()=>{
+        let template = Array(CACHE.data.goodsData[CACHE.data.goodsData.length-1].length).fill("");
+
+        container.find(".dataRow").each(function(){
+            let row = $(this);
+
+            let code = row.attr("forID"); 
+            if (!CACHE.data.allItems[code]) return true;
+            let newItem = JSON.parse(JSON.stringify(CACHE.data.allItems[code]));
+            let lastRow = JSON.parse(JSON.stringify(template));
+            lastRow[26] = newItem.name;            
+            lastRow[0] = newItem.genre;
+            lastRow[1] = newItem.type;
+            lastRow[2] = newItem.spec;
+            lastRow[3] = newItem.kind;
+            lastRow[4] = newItem.level;
+            lastRow[6] = 1000000; //100 van
+
+            
+            row.addClass("flash-row"); 
+            CACHE.data.goodsData.push(lastRow);
+        });
+
+
+        llEvents.trigger("goodsData.changed");
     });
 
 }
