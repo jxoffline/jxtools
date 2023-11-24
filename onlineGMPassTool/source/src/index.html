@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title> 
+    <!-- Add the Bootstrap CSS link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include the Select2 CSS from CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
+
+    <!-- Add the Bootstrap JavaScript and Popper.js (if needed) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+     
+
+    <!-- Zip loader-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip-utils/0.1.0/jszip-utils.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/dexie@3.2.4/dist/dexie.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!--- Jquery UI-->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- JQuery CSV we may need in the future -->
+    <script src="https://cdn.jsdelivr.net/npm/he@1.2.0/he.js"></script>
+
+    <!-- Include the Select2 JavaScript from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+</head>
+<body>
+
+    <div class="pageMain">
+        <h3 id="pageTitle">VNJX OnlineGMPassTool</h3>
+        <div id="page1">
+            
+            
+            <p>Công cụ mã hóa và giải mã các mật khẩu của JX1</p>
+
+            <div class="controllerContainer alert alert-light" role="alert"> 
+                <div class="row">
+                    <div class="col">
+                        <label for="matma">Mật khẩu</label>
+                        <input type="text" id="inputText" name="inputText"  class="form-control">
+                    </div>
+
+                    <div class="col actionBtns">
+                        <button type="button" class="btn btn-primary" id="doEncrypt">Mã hóa -&gt; </button><br/>
+                        <br/>
+                        <button type="button" class="btn btn-warning" id="doDecrypt">&lt;- Giải mã </button>
+                    </div>
+
+                    <div class="col">
+                        <label for="outputText">Mã hóa</label>
+                        <input type="text" id="outputText" name="outputText" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <p id="statusTxt"></p>
+                </div>
+            </div>
+        </div> 
+
+        <footer>
+            Author: <a href="https://www.facebook.com/nghiemtucdeptrai" target=_blank>vinh-ttn</a> (<a href="https://github.com/jxoffline/jxtools/tree/main/onlineGMPassTool/source" target=_blank>source code</a>)
+        </footer>
+    </div>
+ 
+</body>
+</html>
