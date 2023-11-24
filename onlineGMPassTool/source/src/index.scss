@@ -1,0 +1,33 @@
+.pageMain{
+    padding: 20px;
+    display: block;
+    width: 900px;
+    margin: auto;
+}
+
+.actionBtns{
+    text-align: center;
+    max-width: 150px;
+}
+
+.controllerContainer{
+    padding: 60px 40px;
+}
+
+.controllerContainer input[type=text]{
+    width: 300px;
+}
+
+footer{
+    font-weight: normal;
+    color: #bbb;
+}
+
+.alertTxt{
+    color: red;
+
+}
+
+#statusTxt{
+    margin-top: 20px;
+}
