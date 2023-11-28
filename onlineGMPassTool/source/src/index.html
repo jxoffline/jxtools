@@ -33,6 +33,7 @@
     <!-- Include the Select2 JavaScript from CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/js-md5@0.8.3/src/md5.min.js"></script>
 </head>
 <body>
 
@@ -59,6 +60,9 @@
                     <div class="col">
                         <label for="outputText">Mã hóa</label>
                         <input type="text" id="outputText" name="outputText" class="form-control">
+                        <p class="md5">
+                            MD5: <span id="outputTextMD5"></span>
+                        </p>
                     </div>
                 </div>
                 <div class="row">

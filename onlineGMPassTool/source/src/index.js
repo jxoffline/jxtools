@@ -1,5 +1,7 @@
-import './index.scss';
+import './index.scss'; 
 let pEncrypt = require("./pEncrypt");
+ 
+
 
 const showStatus = (inp, type) =>{
 
@@ -17,13 +19,14 @@ $(document).ready(()=>{
         showStatus("");
         const $input = $("#inputText");
         const $output = $("#outputText");
+        const $outputMD5 = $("#outputTextMD5");
 
         const inpVal = $input.val();
         if (!inpVal || inpVal.length > 20 || inpVal.length === 0){
             return showStatus("Mật khẩu không hợp lệ. Phải ít hơn 20 ký tự.", "error");
         }
         $output.val(pEncrypt.encrypt(inpVal));
-
+        $outputMD5.text(window.md5(inpVal));
     });
 
 
@@ -34,7 +37,8 @@ $(document).ready(()=>{
 
         const inpVal = $input.val();
         if (!inpVal || inpVal.length != 32){
-            return showStatus("Mã hóa không hợp lệ. Phải 32 ký tự.", "error");        }
+            return showStatus("Mã hóa không hợp lệ. Phải 32 ký tự.", "error");
+        }
         $output.val(pEncrypt.decrypt(inpVal));
 
     });
