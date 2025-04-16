@@ -174,3 +174,4 @@ ipch/
 # Mac cached files
 .DS_Store
 
+.cursor
