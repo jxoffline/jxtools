@@ -6,14 +6,11 @@
 
 **Contributors**: [vinh-ttn](https://www.facebook.com/nghiemtucdeptrai)
 
-**Tech Stack**:  NodeJS + jQuery + Bootstrap CSS
-
-
+**Tech Stack**: NodeJS + jQuery + Bootstrap CSS
 
 ## Mô tả
 
 Công cụ tạo và giải mã password của JX
-
 
 ## Cài đặt
 
@@ -22,12 +19,7 @@ npm install
 npm run build
 ```
 
-
-
 ## Hướng dẫn sử dụng
 
-- **Bước 1**: Mở liên kết đến trang công cụ
-
-​					https://jxoffline.github.io/jxtools/onlineGMPassTool.d/
-
-- **Bước 2**: Điền vào mật mã cần mã hóa hoặc cần giải mã
+-   **Bước 1**: Mở liên kết đến trang công cụ https://jxoffline.github.io/jxtools/onlineGMPassTool.d/
+-   **Bước 2**: Điền vào mật mã cần mã hóa hoặc cần giải mã
