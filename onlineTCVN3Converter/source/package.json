@@ -10,8 +10,8 @@
         "build": "npx webpack"
     },
     "keywords": [],
-    "author": "",
-    "license": "ISC",
+    "author": "vinh-ttn",
+    "license": "MIT",
     "devDependencies": {
         "@babel/core": "^7.24.0",
         "@babel/preset-env": "^7.24.0",
