@@ -1,0 +1,40 @@
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+    "eslint.alwaysShowStatus": true,
+    "eslint.options": {
+        "overrideConfigFile": ".eslintrc.js"
+    },
+
+    // Default formatter for JS/TS files
+    "[javascript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+
+    // Default formatter for other file types
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.tabWidth": 4,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+
+    "emmet.includeLanguages": {
+        "javascript": "html"
+    },
+
+    "files.associations": {
+        "*.hdbs": "handlebars"
+    },
+
+    "editor.rulers": [80]
+}
