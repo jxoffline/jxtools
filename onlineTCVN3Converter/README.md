@@ -21,8 +21,5 @@ npm run build
 
 ## Hướng dẫn sử dụng
 
--   **Bước 1**: Mở liên kết đến trang công cụ
-
-​ https://jxoffline.github.io/jxtools/onlineTCVN3Converter.d/
-
+-   **Bước 1**: Mở liên kết đến trang công cụ https://jxoffline.github.io/jxtools/onlineTCVN3Converter.d/
 -   **Bước 2**: Điền vào nội dung cần chuyển
